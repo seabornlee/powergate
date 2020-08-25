@@ -41,6 +41,7 @@ var (
 			Filecoin: ffs.FilConfig{
 				RepFactor:       1,
 				DealMinDuration: util.MinDealDuration,
+				FastRetrieval:   true,
 			},
 		},
 	}
