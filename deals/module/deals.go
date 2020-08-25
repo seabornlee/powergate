@@ -150,12 +150,12 @@ func (m *Module) Store(ctx context.Context, waddr string, dataCid cid.Cid, piece
 // Fetch fetches deal data to the underlying blockstore of the Filecoin client.
 // This API is meant for clients that use external implementations of blockstores with
 // their own API, e.g: IPFS.
-func (m *Module) Fetch(ctx context.Context, waddr string, cid cid.Cid) error {
-	return m.retrieve(ctx, waddr, cid, nil)
+func (m *Module) Fetch(ctx context.Context, waddr string, payloadCid cid.Cid, pieceCid *cid.Cid) error {
+	return m.retrieve(ctx, waddr, payloadCid, pieceCid, nil)
 }
 
 // Retrieve retrieves Deal data.
-func (m *Module) Retrieve(ctx context.Context, waddr string, cid cid.Cid, CAREncoding bool) (io.ReadCloser, error) {
+func (m *Module) Retrieve(ctx context.Context, waddr string, payloadCid cid.Cid, pieceCid *cid.Cid, CAREncoding bool) (io.ReadCloser, error) {
 	rf, err := ioutil.TempDir(m.cfg.ImportPath, "retrieve-*")
 	if err != nil {
 		return nil, fmt.Errorf("creating temp dir for retrieval: %s", err)
@@ -165,7 +165,7 @@ func (m *Module) Retrieve(ctx context.Context, waddr string, cid cid.Cid, CAREnc
 		IsCAR: CAREncoding,
 	}
 
-	if err := m.retrieve(ctx, waddr, cid, &ref); err != nil {
+	if err := m.retrieve(ctx, waddr, payloadCid, pieceCid, &ref); err != nil {
 		return nil, fmt.Errorf("retrieving from lotus: %s", err)
 	}
 
@@ -176,12 +176,12 @@ func (m *Module) Retrieve(ctx context.Context, waddr string, cid cid.Cid, CAREnc
 	return &autodeleteFile{File: f}, nil
 }
 
-func (m *Module) retrieve(ctx context.Context, waddr string, cid cid.Cid, ref *api.FileRef) error {
+func (m *Module) retrieve(ctx context.Context, waddr string, payloadCid cid.Cid, pieceCid *cid.Cid, ref *api.FileRef) error {
 	addr, err := address.NewFromString(waddr)
 	if err != nil {
 		return err
 	}
-	offers, err := m.api.ClientFindData(ctx, cid, nil)
+	offers, err := m.api.ClientFindData(ctx, payloadCid, pieceCid)
 	if err != nil {
 		return err
 	}
@@ -191,7 +191,7 @@ func (m *Module) retrieve(ctx context.Context, waddr string, cid cid.Cid, ref *a
 	for _, o := range offers {
 		err = m.api.ClientRetrieve(ctx, o.Order(addr), ref)
 		if err != nil {
-			log.Infof("fetching/retrieving cid %s from %s: %s", cid, o.Miner, err)
+			log.Infof("fetching/retrieving cid %s from %s: %s", payloadCid, o.Miner, err)
 			continue
 		}
 		m.recordRetrieval(waddr, o)
