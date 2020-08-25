@@ -180,7 +180,7 @@ func NewFFSManager(t require.TestingT, ds datastore.TxnDatastore, lotusClient *a
 
 // RequireJobState watches a Job for a desired status.
 func RequireJobState(t require.TestingT, fapi *api.API, jid ffs.JobID, status ffs.JobStatus) ffs.Job {
-	ch := make(chan ffs.Job)
+	ch := make(chan ffs.Job, 10)
 	ctx, cancel := context.WithCancel(context.Background())
 	defer cancel()
 	var err error
