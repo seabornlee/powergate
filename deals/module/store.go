@@ -130,6 +130,7 @@ func (s *store) putRetrieval(rr deals.RetrievalDealRecord) error {
 	if err != nil {
 		return fmt.Errorf("marshaling RetrievalRecord: %s", err)
 	}
+	fmt.Printf("WHAT: %v\n", makeRetrievalKey(rr))
 	if err := s.ds.Put(makeRetrievalKey(rr), buf); err != nil {
 		return fmt.Errorf("put RetrievalRecord: %s", err)
 	}
@@ -172,5 +173,5 @@ func makeFinalDealKey(c cid.Cid) datastore.Key {
 func makeRetrievalKey(rr deals.RetrievalDealRecord) datastore.Key {
 	str := fmt.Sprintf("%v%v%v%v", rr.Time, rr.Addr, rr.DealInfo.Miner, util.CidToString(rr.DealInfo.RootCid))
 	sum := md5.Sum([]byte(str))
-	return dsBaseRetrieval.ChildString(string(sum[:]))
+	return dsBaseRetrieval.ChildString(fmt.Sprintf("%v", sum[:]))
 }

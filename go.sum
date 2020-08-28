@@ -282,8 +282,6 @@ github.com/filecoin-project/go-fil-commcid v0.0.0-20200208005934-2b8bd03caca5 h1
 github.com/filecoin-project/go-fil-commcid v0.0.0-20200208005934-2b8bd03caca5/go.mod h1:JbkIgFF/Z9BDlvrJO1FuKkaWsH673/UdFaiVS6uIHlA=
 github.com/filecoin-project/go-fil-commcid v0.0.0-20200716160307-8f644712406f h1:GxJzR3oRIMTPtpZ0b7QF8FKPK6/iPAc7trhlL5k/g+s=
 github.com/filecoin-project/go-fil-commcid v0.0.0-20200716160307-8f644712406f/go.mod h1:Eaox7Hvus1JgPrL5+M3+h7aSPHc0cVqpSxA+TxIEpZQ=
-github.com/filecoin-project/go-fil-markets v0.5.5 h1:6bDUXXWgMfhHLdp6KJJGfffOwM4lA7I8yJ9bSFLgnbQ=
-github.com/filecoin-project/go-fil-markets v0.5.5/go.mod h1:9Sbm+N/WW2QpcmeDgEcQo7BJMPDbDpfHOvsYS9kT7zs=
 github.com/filecoin-project/go-fil-markets v0.5.6-0.20200814021159-7be996ed8ccb h1:eCLqJb1tmhMCWUFAfJuSyyv/qLrqiAhICLjhUcbi4x8=
 github.com/filecoin-project/go-fil-markets v0.5.6-0.20200814021159-7be996ed8ccb/go.mod h1:SJApXAKr5jyGpbzDEOhvemui0pih7hhT8r2MXJxCP1E=
 github.com/filecoin-project/go-jsonrpc v0.1.1-0.20200602181149-522144ab4e24 h1:Jc7vkplmZYVuaEcSXGHDwefvZIdoyyaoGDLqSr8Svms=
@@ -300,16 +298,12 @@ github.com/filecoin-project/go-statemachine v0.0.0-20200226041606-2074af6d51d9 h
 github.com/filecoin-project/go-statemachine v0.0.0-20200226041606-2074af6d51d9/go.mod h1:FGwQgZAt2Gh5mjlwJUlVB62JeYdo+if0xWxSEfBD9ig=
 github.com/filecoin-project/go-statemachine v0.0.0-20200714194326-a77c3ae20989 h1:1GjCS3xy/CRIw7Tq0HfzX6Al8mklrszQZ3iIFnjPzHk=
 github.com/filecoin-project/go-statemachine v0.0.0-20200714194326-a77c3ae20989/go.mod h1:FGwQgZAt2Gh5mjlwJUlVB62JeYdo+if0xWxSEfBD9ig=
-github.com/filecoin-project/go-statemachine v0.0.0-20200730031800-c3336614d2a7 h1:KAF3WM/xSnl6G6RHX8vDJthg4+e4PSgBh72//6c6Qvc=
-github.com/filecoin-project/go-statemachine v0.0.0-20200730031800-c3336614d2a7/go.mod h1:FGwQgZAt2Gh5mjlwJUlVB62JeYdo+if0xWxSEfBD9ig=
 github.com/filecoin-project/go-statemachine v0.0.0-20200813232949-df9b130df370 h1:Jbburj7Ih2iaJ/o5Q9A+EAeTabME6YII7FLi9SKUf5c=
 github.com/filecoin-project/go-statemachine v0.0.0-20200813232949-df9b130df370/go.mod h1:FGwQgZAt2Gh5mjlwJUlVB62JeYdo+if0xWxSEfBD9ig=
 github.com/filecoin-project/go-statestore v0.1.0 h1:t56reH59843TwXHkMcwyuayStBIiWBRilQjQ+5IiwdQ=
 github.com/filecoin-project/go-statestore v0.1.0/go.mod h1:LFc9hD+fRxPqiHiaqUEZOinUJB4WARkRfNl10O7kTnI=
 github.com/filecoin-project/go-storedcounter v0.0.0-20200421200003-1c99c62e8a5b h1:fkRZSPrYpk42PV3/lIXiL0LHetxde7vyYYvSsttQtfg=
 github.com/filecoin-project/go-storedcounter v0.0.0-20200421200003-1c99c62e8a5b/go.mod h1:Q0GQOBtKf1oE10eSXSlhN45kDBdGvEcVOqMiffqX+N8=
-github.com/filecoin-project/lotus v0.4.3-0.20200813164239-bf0468e65b76 h1:GzH4J3xHAin4Ruihb6W4EAYfTIZIhag7zrVpmzD/3Ec=
-github.com/filecoin-project/lotus v0.4.3-0.20200813164239-bf0468e65b76/go.mod h1:jYiPVZ07oXarTZYW3KmGmZmwcr6hF47hbqyoaZONUMo=
 github.com/filecoin-project/lotus v0.4.3-0.20200814022812-f094273f8ee0 h1:Dq4HIKH2rYB75HCJ0pLr50JQ67TiTpZZyV/zFVaY9ac=
 github.com/filecoin-project/lotus v0.4.3-0.20200814022812-f094273f8ee0/go.mod h1:Btstdi61QGM2WR2z36gEGVRGT0D+d25Ou4CpxZlmWUE=
 github.com/filecoin-project/sector-storage v0.0.0-20200812222704-c3077fb85119 h1:FrV45ZFwOCD+VLkoV4bXTjxSlvSM6qIaQMyEu17m9zY=
@@ -504,7 +498,6 @@ github.com/gorilla/websocket v1.4.2 h1:+/TMaTYc4QFitKJxsQ7Yye35DkWvkdLcvGKqM+x0U
 github.com/gorilla/websocket v1.4.2/go.mod h1:YR8l580nyteQvAITg2hZ9XVh4b55+EU/adAjf1fMHhE=
 github.com/gosuri/uilive v0.0.4 h1:hUEBpQDj8D8jXgtCdBu7sWsy5sbW/5GhuO8KBwJ2jyY=
 github.com/gosuri/uilive v0.0.4/go.mod h1:V/epo5LjjlDE5RJUcqx8dbw+zc93y5Ya3yg8tfZ74VI=
-github.com/gotestyourself/gotestyourself v1.4.0 h1:CDSlSIuRL/Fsc72Ln5lMybtrCvSRDddsHsDRG/nP7Rg=
 github.com/gotestyourself/gotestyourself v2.2.0+incompatible h1:AQwinXlbQR2HvPjQZOmDhRqsv5mZf+Jb1RnSLxcqZcI=
 github.com/gotestyourself/gotestyourself v2.2.0+incompatible/go.mod h1:zZKM6oeNM8k+FRljX1mnzVYeS8wiGgQyvST1/GafPbY=
 github.com/gregjones/httpcache v0.0.0-20180305231024-9cad4c3443a7/go.mod h1:FecbI9+v66THATjSRHfNgh1IVFe/9kFxbXtjV0ctIMA=
@@ -1667,10 +1660,10 @@ github.com/syndtr/goleveldb v1.0.0/go.mod h1:ZVVdQEZoIme9iO1Ch2Jdy24qqXrMMOU6lpP
 github.com/tarm/serial v0.0.0-20180830185346-98f6abe2eb07/go.mod h1:kDXzergiv9cbyO7IOYJZWg1U88JhDg3PB6klq9Hg2pA=
 github.com/textileio/go-datastore-extensions v1.0.0 h1:afpl9qlS1PUdYS9uj1cXTStj6BbzeSQSRscggTE4V0c=
 github.com/textileio/go-datastore-extensions v1.0.0/go.mod h1:Pzj9FDRkb55910dr/FX8M7WywvnS26gBgEDez1ZBuLE=
-github.com/textileio/go-ds-mongo v0.0.0-20200827172626-d4a3859915b8 h1:XbmlhMD4Vh7JT7YnrNnxr0pprUuJi3w+Lf+Dsmcqoxc=
 github.com/textileio/go-ds-mongo v0.0.0-20200827184326-0e5267c1a730 h1:eG9uFnXR1gOeu0DmGA8pd+0pmhCyQTlrP52FNh1b4Xo=
 github.com/textileio/go-ds-mongo v0.0.0-20200827184326-0e5267c1a730/go.mod h1:9wmGTUr+MWidGxYQe27RuCogEUZ7vnQxZb4GWj7uWL8=
 github.com/texttheater/golang-levenshtein v0.0.0-20180516184445-d188e65d659e/go.mod h1:XDKHRm5ThF8YJjx001LtgelzsoaEcvnA7lVWz9EeX3g=
+github.com/tidwall/pretty v1.0.0 h1:HsD+QiTn7sK6flMKIvNmpqz1qrpP3Ps6jOKIKMooyg4=
 github.com/tidwall/pretty v1.0.0/go.mod h1:XNkn88O1ChpSDQmQeStsy+sBenx6DDtFZJxhVysOjyk=
 github.com/tmc/grpc-websocket-proxy v0.0.0-20170815181823-89b8d40f7ca8/go.mod h1:ncp9v5uamzpCO7NfCPTXjqaC+bZgJeR0sMTm6dMHP7U=
 github.com/tmc/grpc-websocket-proxy v0.0.0-20190109142713-0ad062ec5ee5/go.mod h1:ncp9v5uamzpCO7NfCPTXjqaC+bZgJeR0sMTm6dMHP7U=

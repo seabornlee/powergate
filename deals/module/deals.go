@@ -329,7 +329,6 @@ func (m *Module) ListRetrievalDealRecords(opts ...deals.ListDealRecordsOption) (
 	}
 
 	var filtered []deals.RetrievalDealRecord
-
 	if len(c.FromAddrs) > 0 || len(c.DataCids) > 0 {
 		fromAddrsFilter := make(map[string]struct{})
 		dataCidsFilter := make(map[string]struct{})
