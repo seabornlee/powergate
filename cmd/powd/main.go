@@ -121,6 +121,7 @@ func configFromFlags() (server.Config, error) {
 	maxminddbfolder := config.GetString("maxminddbfolder")
 	mongoURI := config.GetString("mongouri")
 	mongoDB := config.GetString("mongodb")
+	ffsAdminToken := config.GetString("ffsadmintoken")
 
 	return server.Config{
 		WalletInitialFunds:   walletInitialFunds,
@@ -130,6 +131,7 @@ func configFromFlags() (server.Config, error) {
 		LotusMasterAddr:      lotusMasterAddr,
 		AutocreateMasterAddr: autocreateMasterAddr,
 		FFSUseMasterAddr:     ffsUseMasterAddr,
+		FFSAdminToken:        ffsAdminToken,
 		Devnet:               devnet,
 		// ToDo: Support secure gRPC connection
 		GrpcHostNetwork:     "tcp",
@@ -301,6 +303,7 @@ func setupFlags() error {
 	pflag.String("maxminddbfolder", ".", "Path of the folder containing GeoLite2-City.mmdb")
 	pflag.String("mongouri", "", "Mongo URI to connect to MongoDB database. (Optional: if empty, will use Badger)")
 	pflag.String("mongodb", "", "Mongo database name. (if --mongouri is used, is mandatory")
+	pflag.String("ffsadmintoken", "", "FFS admin token for authorized APIs. If empty, the APIs will be open to the public.")
 	pflag.Parse()
 
 	config.SetEnvPrefix("POWD")

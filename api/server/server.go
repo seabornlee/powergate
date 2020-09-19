@@ -14,6 +14,9 @@ import (
 	"time"
 
 	"github.com/filecoin-project/go-address"
+	"github.com/gogo/status"
+	grpcm "github.com/grpc-ecosystem/go-grpc-middleware"
+	"github.com/grpc-ecosystem/go-grpc-middleware/util/metautils"
 	"github.com/improbable-eng/grpc-web/go/grpcweb"
 	"github.com/ipfs/go-datastore"
 	badger "github.com/ipfs/go-ds-badger2"
@@ -56,6 +59,7 @@ import (
 	walletModule "github.com/textileio/powergate/wallet/module"
 	walletRpc "github.com/textileio/powergate/wallet/rpc"
 	"google.golang.org/grpc"
+	"google.golang.org/grpc/codes"
 )
 
 const (
@@ -106,6 +110,7 @@ type Config struct {
 	LotusMasterAddr      string
 	AutocreateMasterAddr bool
 	FFSUseMasterAddr     bool
+	FFSAdminToken        string
 	Devnet               bool
 	GatewayBasePath      string
 	GrpcHostNetwork      string
@@ -231,7 +236,11 @@ func NewServer(conf Config) (*Server, error) {
 	}
 
 	log.Info("Starting gRPC, gateway and index HTTP servers...")
-	grpcServer := grpc.NewServer(conf.GrpcServerOpts...)
+	unaryInterceptorChain := grpcm.WithUnaryServerChain(
+		adminAuth(conf),
+	)
+	opts := append(conf.GrpcServerOpts, unaryInterceptorChain)
+	grpcServer := grpc.NewServer(opts...)
 	wrappedGRPCServer := wrapGRPCServer(grpcServer)
 	httpFFSAuthInterceptor, err := newHTTPFFSAuthInterceptor(conf, ffsManager)
 	if err != nil {
@@ -529,4 +538,25 @@ func createDatastore(conf Config) (datastore.TxnDatastore, error) {
 		return nil, fmt.Errorf("opening badger datastore: %s", err)
 	}
 	return ds, nil
+}
+
+func adminAuth(conf Config) grpc.UnaryServerInterceptor {
+	adminMethods := []string{
+		"/ffs.rpc.RPCService/Create",
+	}
+	return func(ctx context.Context, req interface{}, info *grpc.UnaryServerInfo, handler grpc.UnaryHandler) (interface{}, error) {
+		method, _ := grpc.Method(ctx)
+		for _, guarded := range adminMethods {
+			if method == guarded {
+				adminToken := metautils.ExtractIncoming(ctx).Get("X-ffs-token")
+				if conf.FFSAdminToken != "" && adminToken != conf.FFSAdminToken {
+					return nil, status.Error(codes.PermissionDenied, "Method requires admin permission")
+				}
+				return handler(ctx, req)
+			}
+		}
+
+		// Not an admin method
+		return handler(ctx, req)
+	}
 }
